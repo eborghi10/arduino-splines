@@ -141,14 +141,23 @@ template <typename T>
 T Spline<T>::hermite( T t, T p0, T p1, T m0, T m1, T x0, T x1 ) {
   return (hermite_00(t)*p0) + (hermite_10(t)*(x1-x0)*m0) + (hermite_01(t)*p1) + (hermite_11(t)*(x1-x0)*m1);
 }
-template <typename T>
-inline T Spline<T>::hermite_00( T t ) { return (2*pow(t,3)) - (3*pow(t,2)) + 1;}
-template <typename T>
-inline T Spline<T>::hermite_10( T t ) { return pow(t,3) - (2*pow(t,2)) + t; }
-template <typename T>
-inline T Spline<T>::hermite_01( T t ) { return (3*pow(t,2)) - (2*pow(t,3)); }
-template <typename T>
-inline T Spline<T>::hermite_11( T t ) { return pow(t,3) - pow(t,2); }
+template <>
+inline double Spline<double>::hermite_00( double t ) { return (2*pow(t,3)) - (3*pow(t,2)) + 1;}
+template <>
+inline double Spline<double>::hermite_10( double t ) { return pow(t,3) - (2*pow(t,2)) + t; }
+template <>
+inline double Spline<double>::hermite_01( double t ) { return (3*pow(t,2)) - (2*pow(t,3)); }
+template <>
+inline double Spline<double>::hermite_11( double t ) { return pow(t,3) - pow(t,2); }
+
+template <>
+inline float Spline<float>::hermite_00( float t ) { return (2*powf(t,3)) - (3*powf(t,2)) + 1;}
+template <>
+inline float Spline<float>::hermite_10( float t ) { return powf(t,3) - (2*powf(t,2)) + t; }
+template <>
+inline float Spline<float>::hermite_01( float t ) { return (3*powf(t,2)) - (2*powf(t,3)); }
+template <>
+inline float Spline<float>::hermite_11( float t ) { return powf(t,3) - powf(t,2); }
 
 template <typename T>
 T Spline<T>::catmull_tangent( int i ) 
