@@ -8,7 +8,7 @@ Usage
 ---------------
 Checkout the code
 
-    git clone git://github.com/kerinin/arduino-splines.git ~/sketchbook/libraries/
+    git clone git://github.com/eborghi10/arduino-splines.git ~/sketchbook/libraries/
 
 Add the library header to your code
 
@@ -45,17 +45,17 @@ and _setDegree()_ functions.
 
     double x[10] = {0,1,2,3,4,5,6,7,8,9};
     double y[10] = {0,0,5,5,0,0,3,4,5,6};
-    doulbe m[10] = {0,.5,.5,.5.,.25,.25,.75,1,1,1}
+    double m[10] = {0,.5,.5,.5.,.25,.25,.75,1,1,1}
 
-    Spline stepSpline(x,y,10,0);
-    Spline linearSpline(x,y,10,1);
-    Spline hermiteSpline(x,y,m,10);       // No neet to specify type since m passed
-    Spline catmullsSpline(x,y,10,Catmull);
+    Spline<double> stepSpline(x,y,10,0);
+    Spline<double> linearSpline(x,y,10,1);
+    Spline<double> hermiteSpline(x,y,m,10);       // No neet to specify type since m passed
+    Spline<double> catmullsSpline(x,y,10,Catmull);
 
     stepSpline.value(5.5);    // => 0
     linearSpline.value(5.5);  // => 1.5
 
-    Spline mySpline();
+    Spline<double> mySpline();
     mySpline.setPoints(x,y);
     mySpline.setDegree(1);
 
